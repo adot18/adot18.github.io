@@ -65,13 +65,6 @@ window.SITE = {
     },
     {
       type: "code",
-      name: "web_crawler",
-      blurb: "A concurrent web crawler written in Go to learn the language and its concurrency model.",
-      url: "https://github.com/adot18/web_crawler",
-      tags: ["Go", "Concurrency"],
-    },
-    {
-      type: "code",
       name: "MONGODB_CLUSTER",
       blurb: "Deployed a sharded MongoDB cluster holding 3.3 GB of data for reliable, fast queries.",
       url: "https://github.com/adot18/MONGODB_CLUSTER",
