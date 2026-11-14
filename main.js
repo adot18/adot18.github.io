@@ -9,9 +9,24 @@ $("description").textContent = S.description;
 $("linkedin").href = S.links.linkedin;
 $("github").href = S.links.github;
 if (S.links.email) {
-  $("email").href = "mailto:" + S.links.email + "?subject=" + encodeURIComponent("Hello from your website");
-  $("email").title = S.links.email;
-} else $("email").remove();
+  const addr = S.links.email;
+  const subj = encodeURIComponent("Hello from your website");
+  const to = encodeURIComponent(addr);
+  const btn = $("email"), menu = $("email-menu"), copy = $("email-copy");
+  $("email-addr").textContent = addr;
+  $("email-gmail").href = `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${subj}`;
+  $("email-outlook").href = `https://outlook.live.com/mail/0/deeplink/compose?to=${to}&subject=${subj}`;
+  $("email-app").href = `mailto:${addr}?subject=${subj}`;
+  const setOpen = (open) => { menu.hidden = !open; btn.setAttribute("aria-expanded", open); };
+  btn.addEventListener("click", (e) => { e.stopPropagation(); setOpen(menu.hidden); });
+  document.addEventListener("click", (e) => { if (!$("email-wrap").contains(e.target)) setOpen(false); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
+  copy.addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(addr); copy.textContent = "Copied!"; }
+    catch { const r = document.createRange(); r.selectNodeContents($("email-addr")); getSelection().removeAllRanges(); getSelection().addRange(r); copy.textContent = "Press ⌘/Ctrl+C"; }
+    setTimeout(() => (copy.textContent = "Copy address"), 1800);
+  });
+} else $("email-wrap").remove();
 $("footer").textContent = `© ${new Date().getFullYear()} ${S.name}`;
 
 $("experience").innerHTML = S.experience.map((e) => `
