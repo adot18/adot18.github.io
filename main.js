@@ -38,7 +38,7 @@ $("experience").innerHTML = S.experience.map((e) => `
   <article class="job">
     <div class="job-head">
       <div><h3>${esc(e.company)}</h3><p class="job-role">${esc(e.role)}</p></div>
-      <p class="job-meta mono">${esc(e.dates)}<br>${esc(e.place)}</p>
+      <p class="job-meta mono"><span>${esc(e.dates)}</span><span class="sep"> · </span><span>${esc(e.place)}</span></p>
     </div>
     <ul>${e.points.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>
   </article>`).join("");
