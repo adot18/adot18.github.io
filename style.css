@@ -1,7 +1,7 @@
 :root {
   color-scheme: light;
-  --bg: #fafaf9; --surface: #ffffff; --text: #1c1917; --muted: #57534e; --faint: #a8a29e;
-  --line: #e7e5e4; --accent: #2563eb; --accent-soft: #dbeafe; --paper: #b45309; --paper-soft: #fef3c7;
+  --bg: #faf9f5; --surface: #ffffff; --text: #141413; --muted: #3d3d3a; --faint: #5e5d59;
+  --line: #e3e0d4; --accent: #a8492a; --accent-soft: #f6e7df; --paper: #6f5300; --paper-soft: #f3ecd6;
 }
 * { box-sizing: border-box; margin: 0; }
 body { background: var(--bg); color: var(--text); font: 16px/1.6 Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
@@ -10,8 +10,8 @@ body { background: var(--bg); color: var(--text); font: 16px/1.6 Inter, system-u
 a { color: inherit; text-decoration: none; }
 
 .hero { margin-bottom: 64px; }
-.kicker { font-size: 13px; color: var(--faint); letter-spacing: .04em; }
-h1 { font-size: clamp(36px, 7vw, 52px); line-height: 1.1; letter-spacing: -.03em; margin: 8px 0 6px; }
+.kicker { font-size: 13.5px; color: var(--faint); letter-spacing: .04em; }
+h1 { font-family: "Source Serif 4", Georgia, serif; font-weight: 600; font-size: clamp(36px, 7vw, 52px); line-height: 1.1; letter-spacing: -.03em; margin: 8px 0 6px; }
 .role { color: var(--accent); font-weight: 500; }
 .desc { color: var(--muted); margin-top: 20px; max-width: 62ch; font-size: 17px; }
 .buttons { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
@@ -28,8 +28,8 @@ h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .12em; color: v
 .job-head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
 .job h3 { font-size: 18px; letter-spacing: -.01em; }
 .job-role { color: var(--muted); font-size: 15px; }
-.job-meta { font-size: 12px; color: var(--faint); text-align: right; white-space: nowrap; line-height: 1.7; }
-.job ul { margin-top: 12px; padding-left: 18px; color: var(--muted); font-size: 15px; display: grid; gap: 6px; }
+.job-meta { font-size: 12.5px; color: var(--faint); text-align: right; white-space: nowrap; line-height: 1.7; }
+.job ul { margin-top: 12px; padding-left: 18px; color: var(--muted); font-size: 15.5px; line-height: 1.65; display: grid; gap: 6px; }
 .job li::marker { color: var(--faint); }
 .edu { margin-top: 36px; color: var(--muted); font-size: 15px; }
 .edu .mono { font-size: 12px; color: var(--faint); text-transform: uppercase; letter-spacing: .1em; margin-right: 10px; }
@@ -42,7 +42,7 @@ h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .12em; color: v
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
 .card { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 20px; border-radius: 14px;
   background: var(--surface); border: 1px solid var(--line); transition: .15s; }
-.card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 24px -12px rgba(0,0,0,.25); }
+.card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 24px -14px rgba(20,20,19,.2); }
 .card h3 { font-size: 16px; letter-spacing: -.01em; padding-right: 20px; word-break: break-word; }
 .card p { color: var(--muted); font-size: 14px; flex: 1; }
 .badge { align-self: flex-start; font-size: 11px; padding: 2px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: .06em; }
