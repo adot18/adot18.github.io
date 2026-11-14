@@ -72,13 +72,6 @@ window.SITE = {
     },
     {
       type: "code",
-      name: "daily_helper_agent",
-      blurb: "An agent that gathers the day's important news and emails me a digest.",
-      url: "https://github.com/adot18/daily_helper_agent",
-      tags: ["Agents", "Automation"],
-    },
-    {
-      type: "code",
       name: "MONGODB_CLUSTER",
       blurb: "Deployed a sharded MongoDB cluster holding 3.3 GB of data for reliable, fast queries.",
       url: "https://github.com/adot18/MONGODB_CLUSTER",
