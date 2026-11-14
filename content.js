@@ -16,6 +16,16 @@ window.SITE = {
     email: "ongalex888@gmail.com",
   },
 
+  // Shown under the intro. Edit freely.
+  interests: {
+    intro: "Beyond runtime optimization, I'm interested in learning more about:",
+    items: [
+      "Continual learning",
+      "Sandboxing",
+      "The next layer of inference",
+    ],
+  },
+
   experience: [
     {
       company: "Zyphra",

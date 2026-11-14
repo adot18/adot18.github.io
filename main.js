@@ -29,6 +29,11 @@ if (S.links.email) {
 } else $("email-wrap").remove();
 $("footer").textContent = `© ${new Date().getFullYear()} ${S.name}`;
 
+if (S.interests && S.interests.items.length) {
+  $("interests-intro").textContent = S.interests.intro || "";
+  $("interests").innerHTML = S.interests.items.map((i) => `<li>${esc(i)}</li>`).join("");
+} else $("interests-section").remove();
+
 $("experience").innerHTML = S.experience.map((e) => `
   <article class="job">
     <div class="job-head">

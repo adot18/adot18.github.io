@@ -72,3 +72,8 @@ button.btn { font: inherit; font-weight: 500; font-size: 15px; color: inherit; c
 .menu a, .menu button { display: block; width: 100%; text-align: left; padding: 8px 10px; border-radius: 8px;
   font: 500 14px Inter, sans-serif; color: var(--text); background: none; border: 0; cursor: pointer; }
 .menu a:hover, .menu button:hover { background: var(--accent-soft); color: var(--accent); }
+
+.interests-intro { color: var(--muted); margin-bottom: 14px; }
+.interests { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.interests li { padding: 8px 16px; border-radius: 999px; background: var(--accent-soft); color: var(--accent);
+  font-weight: 500; font-size: 15px; }
