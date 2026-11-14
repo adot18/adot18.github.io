@@ -13,6 +13,7 @@ window.SITE = {
   links: {
     linkedin: "https://www.linkedin.com/in/alex-ong/",
     github: "https://github.com/adot18",
+    email: "ongalex888@gmail.com",
   },
 
   experience: [

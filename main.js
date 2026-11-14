@@ -8,6 +8,10 @@ $("location").textContent = S.location;
 $("description").textContent = S.description;
 $("linkedin").href = S.links.linkedin;
 $("github").href = S.links.github;
+if (S.links.email) {
+  $("email").href = "mailto:" + S.links.email + "?subject=" + encodeURIComponent("Hello from your website");
+  $("email").title = S.links.email;
+} else $("email").remove();
 $("footer").textContent = `© ${new Date().getFullYear()} ${S.name}`;
 
 $("experience").innerHTML = S.experience.map((e) => `
