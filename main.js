@@ -45,17 +45,29 @@ $("experience").innerHTML = S.experience.map((e) => `
 
 if (S.education) $("education").innerHTML = `<span class="mono">Education</span> ${esc(S.education.school)}, ${esc(S.education.degree)}`;
 
+const manualProjects = Array.isArray(S.projects) ? S.projects : [];
+const pinnedProjects = Array.isArray(window.PINNED_PROJECTS) ? window.PINNED_PROJECTS : [];
+const normUrl = (u) => String(u || "").replace(/\/+$/, "").toLowerCase();
+const manualUrls = new Set(manualProjects.map((p) => normUrl(p.url)));
+const allProjects = [
+  ...manualProjects,
+  ...pinnedProjects.filter((p) => !manualUrls.has(normUrl(p.url))),
+];
+
 function renderProjects(filter) {
-  $("projects").innerHTML = S.projects
+  $("projects").innerHTML = allProjects
     .filter((p) => filter === "all" || p.type === filter)
-    .map((p) => `
+    .map((p) => {
+      const tags = (p.tags || []).map((t) => `<span class="mono">${esc(t)}</span>`).join("");
+      return `
     <a class="card" href="${esc(p.url)}" target="_blank" rel="noopener">
       <span class="badge mono ${p.type}">${p.type === "paper" ? "Paper" : "Code"}</span>
       <h3>${esc(p.name)}</h3>
-      <p>${esc(p.blurb)}</p>
-      <div class="tags">${(p.tags || []).map((t) => `<span class="mono">${esc(t)}</span>`).join("")}</div>
+      <p>${esc(p.blurb || "")}</p>
+      ${tags ? `<div class="tags">${tags}</div>` : ""}
       <span class="arrow" aria-hidden="true">↗</span>
-    </a>`).join("");
+    </a>`;
+    }).join("");
 }
 renderProjects("all");
 

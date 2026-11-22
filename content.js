@@ -64,7 +64,8 @@ window.SITE = {
 
   education: { school: "San Jose State University", degree: "B.S. Computer Science" },
 
-  // type: "paper" or "code". Add `paper` and/or `code` URLs; the card links to `url`.
+  // Manual entries (e.g. papers or custom overrides matching a repo URL).
+  // Pinned GitHub repositories are automatically synced into pinned-projects.js.
   projects: [
     {
       type: "paper",
@@ -72,27 +73,6 @@ window.SITE = {
       blurb: "Co-author. Contributed Zookeeper, training resiliency for the MI300X pretraining run: automated link-flap detection, rekicks, and fault triage.",
       url: "https://arxiv.org/abs/2605.05365",
       tags: ["arXiv 2026", "MI300X", "Pretraining"],
-    },
-    {
-      type: "code",
-      name: "MongoDB Cluster",
-      blurb: "Deployed a sharded MongoDB cluster holding 3.3 GB of data for reliable, fast queries.",
-      url: "https://github.com/adot18/MONGODB_CLUSTER",
-      tags: ["MongoDB", "Sharding"],
-    },
-    {
-      type: "code",
-      name: "Malware Analyzer",
-      blurb: "Preprocessed opcode sequences from malware files to train HMMs that separate malware families.",
-      url: "https://github.com/adot18/MalwareAnalyzer",
-      tags: ["ML", "HMM", "Security"],
-    },
-    {
-      type: "code",
-      name: "StarCraft Data Analysis",
-      blurb: "Logistic regression on player stats (APM and more) to predict which players are likely to go pro.",
-      url: "https://github.com/adot18/Starcraft_Data_analysis",
-      tags: ["Data science", "Python"],
     },
   ],
 };

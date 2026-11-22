@@ -1,0 +1,71 @@
+name: Sync pinned projects and deploy
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  sync-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Sync pinned GitHub projects
+        id: sync
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 .github/scripts/sync_pinned.py || test -f pinned-projects.js
+          if git diff --quiet pinned-projects.js; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit updated pinned-projects.js
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pinned-projects.js
+          git commit -m "Sync pinned GitHub projects"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Stage site files
+        if: github.event_name != 'schedule' || steps.sync.outputs.changed == 'true'
+        run: |
+          rm -rf _site
+          mkdir -p _site
+          rsync -a --exclude='.git' --exclude='.github' --exclude='_site' ./ _site/
+
+      - name: Setup Pages
+        if: github.event_name != 'schedule' || steps.sync.outputs.changed == 'true'
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        if: github.event_name != 'schedule' || steps.sync.outputs.changed == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        if: github.event_name != 'schedule' || steps.sync.outputs.changed == 'true'
+        id: deployment
+        uses: actions/deploy-pages@v4
