@@ -6,7 +6,7 @@ window.PINNED_PROJECTS = [
     "blurb": "Empirical CUDA & ROCm GPU roofline probe (HBM, L2, LDS/SMEM, Tensor/Matrix Cores, Graph launch floor, PCIe/P2P) + LLM inference exercises",
     "url": "https://github.com/adot18/gpu-roofline",
     "tags": [
-      "C++"
+      "Python"
     ]
   },
   {
